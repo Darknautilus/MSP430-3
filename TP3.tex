@@ -1,0 +1,86 @@
+\documentclass[a4paper,11pt,article]{memoir}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Fonts
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[francais]{babel}
+\usepackage{microtype}
+\usepackage{lmodern}
+
+\usepackage[scaled=0.95]{helvet}
+\renewcommand\familydefault{\sfdefault}
+\usepackage[EULERGREEK]{sansmath}\sansmath % sans-serif math w/ greeks
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Page layout
+
+\usepackage[margin=2cm]{geometry}
+\pagestyle{plain}
+\setlength{\parindent}{0pt}
+
+\renewcommand*{\chaptitlefont}{\secheadstyle}% for toc, bib, and friends 
+\setsecheadstyle{\Large} % default: \Large\bfseries
+\setsubsecheadstyle{\large} % default: \Large\bfseries
+\setsecnumdepth{subsubsection}
+\settocdepth{subsubsection}
+\renewcommand*{\thesection}{\arabic{section}}
+\renewcommand*{\thesubsection}{\thesection.\arabic{subsection}}
+\setbeforesecskip{3 ex plus 1ex minus 1ex} % default(ex): 3.5+1-.2
+\setaftersecskip{2 ex plus 1ex minus 1ex} % default(ex): 2.3+.2
+\setbeforeparaskip{2 ex plus 1ex minus 1ex}% default(ex): 3.25+1-.2
+
+\setcounter{secnumdepth}{3}
+
+\renewcommand\title[1]{{\LARGE\fontfamily{pag}\selectfont #1}\par\bigskip}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Utilities
+
+
+% \usepackage{minted} % syntax coloring % If you don't have the
+% 'minted' package, just turn all listings to verbatim :-)
+
+\usepackage{boxedminipage}
+
+\newenvironment{reponse}{
+\begin{center}
+  \begin{boxedminipage}{0.9\linewidth}\underline{Réponse}~:~
+}{
+  \end{boxedminipage}
+\end{center}
+}
+
+\usepackage{graphicx}
+\usepackage{listings}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Document body
+
+\begin{document}
+
+\includegraphics[height=2cm]{fig/insa.pdf}
+%
+\hfill
+%
+{\fontfamily{pag}\selectfont Département IF / Architecture Matérielle}
+
+\bigskip
+
+\title{TP3: Programmation par interruptions}
+
+\bigskip
+\noindent\par\parbox{.48\textwidth}{Nom : Bertron} \parbox{.48\textwidth}{Prénom : Aurélien}
+\bigskip
+\noindent\par\parbox{.48\textwidth}{Nom : Bounous} \parbox{.48\textwidth}{Prénom : Gabriel}
+\bigskip
+\noindent\par\parbox{.48\textwidth}{Nom : Turunen} \parbox{.48\textwidth}{Prénom : Samu}
+\bigskip
+\noindent\par\parbox{.2\textwidth}{Groupe : 2} \parbox{.2\textwidth}{Binôme : B3251}
+
+\bigskip
+
+\paragraph{Question 1 ---}  
+
+\end{document}

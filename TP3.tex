@@ -10,6 +10,7 @@
 
 \usepackage[scaled=0.95]{helvet}
 \renewcommand\familydefault{\sfdefault}
+\usepackage{textgreek}
 \usepackage[EULERGREEK]{sansmath}\sansmath % sans-serif math w/ greeks
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -81,6 +82,25 @@
 
 \bigskip
 
-\paragraph{Question 1 ---}  
+\paragraph{Question 1 ---}  On vient de configurer le port GPIO correspondant au bouton. D'après [Motherboard.pdf|19], les boutons sont reliés aux pins 86 et 87 correspondant au port P1 (respectivement bits 1 et 2). D'après [MSP430.pdf|413], il faut utiliser le registre P1IN pour lire l'état du bouton.
+
+\paragraph{Question 2 ---} D'après [MSP430.pdf|453] le timer A comporte 4 modes de fonctionnement :\\
+\begin{itemize}
+	\item MCx = 00 : Stop, stoppe le timer
+	\item MCx = 01 : Up, le timer compte de 0 à la valeur stockée dans le registre TACCR0, puis repart de 0
+	\item MCx = 10 : Continuous, le timer se comporte comme une horloge, en comptant en continu de 0 à la valeur maximale codable sur 16 bits (0xFFFF), puis repart de 0
+	\item MCx = 11 : Up/Down, le timer compte périodiquement de 0 à la valeur de TACCR0, puis recompte depuis la valeur de TACCR0 jusqu'à 0
+\end{itemize}
+
+\paragraph{Question 3 ---}  D'après [MSP430.pdf|452], les différentes sources internes possibles sont ACLK et SMCLK.
+
+\paragraph{Question 4 ---}  D'après [MSP430.pdf|294], $f_(ACLK) = 32768 Hz$ et $f_(SMCLK) = 32 \times f_(ACLK) = 1048576 Hz$.
+
+\paragraph{Question 5 ---}  Pour ACLK, il y a 32768 oscillations en 1 seconde, il faut donc 327,68 cycles pour compter 10 ms. Pour SMCLK, il faut 10485,76 cycles.
+
+\paragraph{Question 6 ---}  On choisit l'arrondi qui minimise l'erreur. Pour ACLK, on choisit de compter 328 cycles, on a donc une erreur de 0,32 cycles, soit 9,76\textmugreek s (0,097\%)\\
+Pour SMCLK, on choisit de compter 10486 cycles, on a donc une erreur de 0,24 cycles, soit 0,23\textmugreek s (0,0023\%)
+
+\paragraph{Question 7 ---}  On choisit l'horloge SMCLK car elle permet de minimiser l'erreur d'arrondi. On choisit pour les mêmes raisons de diviser la fréquence par 1. Le mode du timer sera Up avec une valeur maximum de 10486 afin de générer une interruption toutes les 10 ms.
 
 \end{document}

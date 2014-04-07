@@ -10,6 +10,6 @@
 @REM 
 
 
-"C:\Program Files\IAR Systems\Embedded Workbench 6.0 Kickstart\common\bin\cspybat" "C:\Program Files\IAR Systems\Embedded Workbench 6.0 Kickstart\430\bin\430proc.dll" "C:\Program Files\IAR Systems\Embedded Workbench 6.0 Kickstart\430\bin\430fet.dll"  %1 --plugin "C:\Program Files\IAR Systems\Embedded Workbench 6.0 Kickstart\430\bin\430bat.dll" --backend -B "--hardware_multiplier" "16" "--hwmult_type" "1" "-d" "fet" "--erase_main_and_info" "--derivative" "Generic MSP430 device" "--protocol" "4wire" "--port" "COM11" "--connection" "ti_usb" "--settlingtime=0" 
+"C:\Program Files\IAR Systems\Embedded Workbench 6.0 Kickstart\common\bin\cspybat" "C:\Program Files\IAR Systems\Embedded Workbench 6.0 Kickstart\430\bin\430proc.dll" "C:\Program Files\IAR Systems\Embedded Workbench 6.0 Kickstart\430\bin\430fet.dll"  %1 --plugin "C:\Program Files\IAR Systems\Embedded Workbench 6.0 Kickstart\430\bin\430bat.dll" --backend -B "--hardware_multiplier" "16" "--hwmult_type" "1" "-d" "fet" "--erase_main_and_info" "--derivative" "Generic MSP430 device" "--protocol" "4wire" "--port" "COM5" "--connection" "ti_usb" "--settlingtime=0" 
 
 

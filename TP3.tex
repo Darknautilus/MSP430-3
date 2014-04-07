@@ -103,4 +103,22 @@ Pour SMCLK, on choisit de compter 10486 cycles, on a donc une erreur de 0,24 cyc
 
 \paragraph{Question 7 ---}  On choisit l'horloge SMCLK car elle permet de minimiser l'erreur d'arrondi. On choisit pour les mêmes raisons de diviser la fréquence par 1. Le mode du timer sera Up avec une valeur maximum de 10486 afin de générer une interruption toutes les 10 ms.
 
+\paragraph{Question 8 ---}  Selon [datasheet.pdf|13], le vecteur d'interruption correspondant au timer A est à l'adresse 0xFFEC, c'est donc celui-ci qu'on utilise.
+
+\paragraph{Question 9 ---}  La directive \verb|#pragma vector=...| permet d'identifier le vecteur d'interruption dont on souhaite modifier la valeur. Cette valeur est un pointeur vers une fonction de traitement d'interruption.
+
+\paragraph{Question 10 ---}  Le mot clé \verb|__interrupt| identifie une fonction qui sera utilisée pour traiter une interruption.
+
+\paragraph{Question 11 ---}  
+
+\paragraph{Question 12 ---}  Le bit GIE permet de définir si les interruptions peuvent être masquées ou non. ([MSP430.pdf|46])
+
+\paragraph{Question 15 ---}  // mettre photos interruptFunctions[Avec|Sans]Pragma.png
+
+\paragraph{Question 16 ---}  D'après [MSP430.pdf|34], au début de la fonction d'interruption, le contexte d'exécution est sauvegardé. Quatre registres sont sauvegardés dans la pile en plus du PC et du SR. Cela permet de restituer l'état initial des registres utilisés par le programme lors du retour de la fonction d'interruption.
+
+\paragraph{Question 17 ---}  Comme on l'a vu ci-dessus, les registres PC et SR sont sauvegardés dans la pile au début de l'exécution de la fonction d'interruption. L'instruction \verb|reti| permet de restaurer le contexte d'exécution précédant l'exécution de la fonction ([MSP430.pdf|214]). L'instruction \verb|ret| ne restaure que le PC ([MSP430.pdf|213]).
+
+\paragraph{Question 18 ---}  
+
 \end{document}

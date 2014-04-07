@@ -62,11 +62,11 @@
         </option>
         <option>
           <name>RTConfigPath</name>
-          <state>$TOOLKIT_DIR$\LIB\DLIB\dl430xsfn.h</state>
+          <state>$TOOLKIT_DIR$\LIB\DLIB\dl430fn.h</state>
         </option>
         <option>
           <name>RTLibraryPath</name>
-          <state>$TOOLKIT_DIR$\LIB\DLIB\dl430xsfn.r43</state>
+          <state>$TOOLKIT_DIR$\LIB\DLIB\dl430fn.r43</state>
         </option>
         <option>
           <name>Input variant</name>
@@ -345,7 +345,7 @@
         </option>
         <option>
           <name>CCOptLevel</name>
-          <state>1</state>
+          <state>0</state>
         </option>
         <option>
           <name>CCOptStrategy</name>
@@ -354,7 +354,7 @@
         </option>
         <option>
           <name>CCOptLevelSlave</name>
-          <state>1</state>
+          <state>0</state>
         </option>
         <option>
           <name>CInput</name>

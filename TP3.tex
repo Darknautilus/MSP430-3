@@ -119,6 +119,32 @@ Pour SMCLK, on choisit de compter 10486 cycles, on a donc une erreur de 0,24 cyc
 
 \paragraph{Question 17 ---}  Comme on l'a vu ci-dessus, les registres PC et SR sont sauvegardés dans la pile au début de l'exécution de la fonction d'interruption. L'instruction \verb|reti| permet de restaurer le contexte d'exécution précédant l'exécution de la fonction ([MSP430.pdf|214]). L'instruction \verb|ret| ne restaure que le PC ([MSP430.pdf|213]).
 
-\paragraph{Question 18 ---}  
+\paragraph{Question 18 ---}  Dans [datasheet.pdf|13], on peut voir que la table des vecteurs d'interruptions se situe entre les adresses 0xFFC0 et 0xFFFF. Dans la vue mémoire présentée ici, on voit le contenu de la table. On remarque les valeurs 12 et 32 qui sortent du lot. En comptant les octets depuis le début de la ligne, on en déduit que ces deux octets sont situés à l'adresse 0xFFEC.
+Or, cette adresse est précisément l'adresse du vecteur d'interruption du timer A, comme vu à la question 8. Les valeurs 12 et 32 correspondent à l'adresse de la fonction de traitement (0x003212) comme on peut le voir sur l'image avec pragma de la question 15.
+// mettre image vecteur interruption
+
+\paragraph{Question 19 ---}  
+
+\begin{itemize}
+	\item[Programme principal :] initialement, la pile ne contient que l'adresse de l'instruction qui appelle la fin du programme (0x3114)
+	\item[Début du traitement de l'interruption :] le PC est sauvegardé dans la pile (adresse du for(;;) : 0x322A), ainsi que la valeur du SR (0x000B), dans les registres, le PC est mis à jour avec l'adresse de la fonction de traitement (0x31F2), et le SR est remis à 0.
+	\item[Début du corps de la fonction :] le contenu des registres R12 à R15 est sauvegardé dans la pile. PC est incrémenté et SR est mis à jour conformément aux instructions précédentes.
+	\item[Avant restauration du contexte :] on peut voir que R12 a été mis à jour avec la nouvelle valeur du compteur. La pile n'a pas été modifiée.
+	\item[Avant instruction reti :] les valeurs des registres R12 à R15 ont été restaurées depuis la pile.
+	\item[Après instruction reti :] les valeurs de SR et PC sont restaurées depuis la pile. On se retrouve dans le même qu'avant l'appel de la fonction d'interruption.
+\end{itemize}
+// imagesssss
+
+\paragraph{Question 20 ---}  Comme on peut le voir dans [MSP430.pdf|412], on peut activer les interruptions sur un port en indiquant quels pins vont générer une interruption. Dans notre cas, les boutons sont sur les pins P1.0 et P1.1, on met donc les bits correspondants à 1.
+// code
+
+\paragraph{Question 21 ---}  On procède de la même manière que pour l'autre fonction de traitement d'interruptions
+// code
+
+\paragraph{Question 22 ---}  // image vecteur interruption bouton
+
+\paragraph{Question 23 ---}  Il faut différencier l'appui sur les deux boutons. Pour cela, on teste la valeur de P1IFG. Comme on a activé les interruptions sur les deux premiers bits de P1IFG, on ne teste que ces deux bits avec un ET binaire.
+// code
+D'après [MSP430.pdf|453], on controle le mode du timer avec 2 bits (positions 4 et 5 dans TACTL). On utilise le mode UP (01)  pour compter de 0 à une valeur maximale. Le mode STOP est associé à la valeur 00. Il n'y a donc qu'un bit qui diffère entre ces deux modes. Pour faire commuter ce bit, et ainsi alterner entre les deux modes, on utilise un OU exclusif.
 
 \end{document}
